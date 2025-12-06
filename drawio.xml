@@ -1,58 +1,106 @@
 <mxfile host="app.diagrams.net">
-  <diagram name="Strawman – Private Connectivity" id="strawman-arch-001">
-    <mxGraphModel dx="1592" dy="922" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+  <diagram name="Strawman – Private Connectivity" id="StrawmanArch001">
+    <mxGraphModel dx="1481" dy="835" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
 
         <!-- ZONE 1 – On-Prem Data Centers -->
-        <mxCell id="zone1" value="On-Prem Data Centers" style="rounded=1;fillColor=#1e1e1e;strokeColor=#ffffff;fontColor=#ffffff;" vertex="1" parent="1">
-          <mxGeometry x="20" y="80" width="220" height="260" as="geometry" />
+        <mxCell id="zone1" value="On-Prem Data Centers" style="swimlane;startSize=20;fillColor=#1e1e1e;strokeColor=#ffffff;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="20" y="60" width="220" height="260" as="geometry"/>
         </mxCell>
 
-        <mxCell id="ashburnDC" value="Ashburn DC" style="swimlane;fillColor=#2b2b2b;strokeColor=#ffffff;fontColor=#ffffff;" vertex="1" parent="zone1">
-          <mxGeometry x="10" y="30" width="200" height="100" as="geometry" />
+        <mxCell id="ashburnDC" value="Ashburn DC&#xa;📞 Carrier PSTN (US East) → SBC Cluster – Ashburn" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#333333;fontColor=#ffffff;strokeColor=#ffffff;" vertex="1" parent="zone1">
+          <mxGeometry x="10" y="30" width="200" height="80" as="geometry"/>
         </mxCell>
-        <mxCell id="sbcAshburn" value="&#128246; SBC Cluster – Ashburn" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#3b3b3b;fontColor=#ffffff;" vertex="1" parent="ashburnDC">
-          <mxGeometry x="20" y="20" width="160" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="pstnUSEast" value="&#9742; Carrier PSTN (US East)" style="shape=ellipse;fillColor=#5c5c5c;fontColor=#ffffff;" vertex="1" parent="ashburnDC">
-          <mxGeometry x="20" y="60" width="160" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="arrowPSTNAshburn" style="endArrow=block;strokeColor=#ffffff;" edge="1" parent="ashburnDC" source="pstnUSEast" target="sbcAshburn">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="windsorDC" value="Windsor DC" style="swimlane;fillColor=#2b2b2b;strokeColor=#ffffff;fontColor=#ffffff;" vertex="1" parent="zone1">
-          <mxGeometry x="10" y="140" width="200" height="100" as="geometry" />
-        </mxCell>
-        <mxCell id="sbcWindsor" value="&#128246; SBC Cluster – Windsor" style="shape=ellipse;whiteSpace=wrap;html=1;fillColor=#3b3b3b;fontColor=#ffffff;" vertex="1" parent="windsorDC">
-          <mxGeometry x="20" y="20" width="160" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="pstnCanada" value="&#9742; Carrier PSTN (Canada / Regional)" style="shape=ellipse;fillColor=#5c5c5c;fontColor=#ffffff;" vertex="1" parent="windsorDC">
-          <mxGeometry x="20" y="60" width="160" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="arrowPSTNWindsor" style="endArrow=block;strokeColor=#ffffff;" edge="1" parent="windsorDC" source="pstnCanada" target="sbcWindsor">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="windsorDC" value="Windsor DC&#xa;📞 Carrier PSTN (Canada) → SBC Cluster – Windsor" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#333333;fontColor=#ffffff;strokeColor=#ffffff;" vertex="1" parent="zone1">
+          <mxGeometry x="10" y="120" width="200" height="80" as="geometry"/>
         </mxCell>
 
         <!-- ZONE 2 – Enterprise Backbone -->
-        <mxCell id="zone2" value="Enterprise Backbone (Core + WAN)" style="rounded=1;fillColor=#1e1e1e;strokeColor=#ffffff;fontColor=#ffffff;" vertex="1" parent="1">
-          <mxGeometry x="260" y="80" width="220" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="windsorCore" value="Windsor Core Network" style="rounded=1;fillColor=#2b2b2b;fontColor=#ffffff;" vertex="1" parent="zone2">
-          <mxGeometry x="20" y="20" width="180" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="ashburnCore" value="Ashburn Core Network" style="rounded=1;fillColor=#2b2b2b;fontColor=#ffffff;" vertex="1" parent="zone2">
-          <mxGeometry x="20" y="60" width="180" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="wanLink" value="Private WAN (Ashburn ↔ Windsor)" style="rounded=1;fillColor=#3b3b3b;fontColor=#ffffff;" vertex="1" parent="zone2">
-          <mxGeometry x="20" y="100" width="180" height="30" as="geometry" />
+        <mxCell id="zone2" value="Enterprise Backbone (Core + WAN)" style="swimlane;startSize=20;fillColor=#1e1e1e;strokeColor=#ffffff;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="260" y="60" width="220" height="260" as="geometry"/>
         </mxCell>
 
-        <!-- Add more zones here as needed (Edge Firewall, Equinix, Twilio Interconnect) -->
+        <mxCell id="windsorCore" value="Windsor Core Network" style="rounded=1;fillColor=#444444;fontColor=#ffffff;strokeColor=#ffffff;" vertex="1" parent="zone2">
+          <mxGeometry x="10" y="30" width="200" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="ashburnCore" value="Ashburn Core Network" style="rounded=1;fillColor=#444444;fontColor=#ffffff;strokeColor=#ffffff;" vertex="1" parent="zone2">
+          <mxGeometry x="10" y="80" width="200" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="wan" value="Private WAN (Ashburn ↔ Windsor)" style="rounded=1;fillColor=#444444;fontColor=#ffffff;strokeColor=#ffffff;" vertex="1" parent="zone2">
+          <mxGeometry x="10" y="130" width="200" height="40" as="geometry"/>
+        </mxCell>
 
-        <!-- Placeholder - Finish rest of zones per original layout -->
+        <!-- ZONE 3 – Edge Security -->
+        <mxCell id="zone3" value="Ashburn Edge Security" style="swimlane;startSize=20;fillColor=#1e1e1e;strokeColor=#ffffff;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="500" y="100" width="180" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="firewall" value="🔥 Ashburn Edge Firewall" style="shape=mxgraph.security.firewall;whiteSpace=wrap;html=1;fillColor=#ff0000;fontColor=#ffffff;strokeColor=#ffffff;" vertex="1" parent="zone3">
+          <mxGeometry x="10" y="30" width="160" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ZONE 4 – Equinix On-Ramps -->
+        <mxCell id="zone4" value="Equinix On-Ramps" style="swimlane;startSize=20;fillColor=#1e1e1e;strokeColor=#ffffff;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="700" y="60" width="220" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="eqAshburn" value="Equinix DC1 – Ashburn (Primary)" style="rounded=1;fillColor=#5b5b5b;fontColor=#ffffff;strokeColor=#ffffff;" vertex="1" parent="zone4">
+          <mxGeometry x="10" y="30" width="200" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="eqNY" value="Equinix NY5 – New York (Secondary)" style="rounded=1;fillColor=#5b5b5b;fontColor=#ffffff;strokeColor=#ffffff;" vertex="1" parent="zone4">
+          <mxGeometry x="10" y="90" width="200" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- ZONE 5 – Equinix Fabric -->
+        <mxCell id="zone5" value="Equinix Fabric (Third-Party Exchange)" style="swimlane;startSize=20;fillColor=#1e1e1e;strokeColor=#ffffff;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="940" y="60" width="220" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="vcDC1" value="Virtual Circuits from DC1" style="rounded=1;fillColor=#666666;fontColor=#ffffff;strokeColor=#ffffff;" vertex="1" parent="zone5">
+          <mxGeometry x="10" y="30" width="200" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="vcNY5" value="Virtual Circuits from NY5" style="rounded=1;fillColor=#666666;fontColor=#ffffff;strokeColor=#ffffff;" vertex="1" parent="zone5">
+          <mxGeometry x="10" y="80" width="200" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- ZONE 6 – Twilio Interconnect & Voice Edge -->
+        <mxCell id="zone6" value="Twilio Interconnect & Voice Edge" style="swimlane;startSize=20;fillColor=#1e1e1e;strokeColor=#ffffff;fontColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="60" width="260" height="260" as="geometry"/>
+        </mxCell>
+        <mxCell id="twAshburn" value="Twilio ashburn-ix&#xa;Interconnect Edge → Twilio SIP / Media (East)" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#990000;fontColor=#ffffff;strokeColor=#ffffff;" vertex="1" parent="zone6">
+          <mxGeometry x="10" y="30" width="240" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="twSJ" value="Twilio san-jose-ix&#xa;Interconnect Edge → Twilio SIP / Media (West)" style="shape=rectangle;rounded=1;whiteSpace=wrap;html=1;fillColor=#990000;fontColor=#ffffff;strokeColor=#ffffff;" vertex="1" parent="zone6">
+          <mxGeometry x="10" y="100" width="240" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- CONNECTIVITY ARROWS -->
+
+        <!-- From Windsor SBC → Core → WAN → Ashburn Core -->
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;dashed=0;strokeColor=#ffffff;" edge="1" parent="1" source="windsorDC" target="windsorCore"><mxGeometry relative="1"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;dashed=0;strokeColor=#ffffff;" edge="1" parent="1" source="windsorCore" target="wan"><mxGeometry relative="1"/></mxCell>
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;dashed=0;strokeColor=#ffffff;" edge="1" parent="1" source="wan" target="ashburnCore"><mxGeometry relative="1"/></mxCell>
+
+        <!-- Ashburn SBC → Core -->
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;dashed=0;strokeColor=#ffffff;" edge="1" parent="1" source="ashburnDC" target="ashburnCore"><mxGeometry relative="1"/></mxCell>
+
+        <!-- Core → Firewall -->
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;strokeColor=#ffffff;" edge="1" parent="1" source="ashburnCore" target="firewall"><mxGeometry relative="1"/></mxCell>
+
+        <!-- Firewall → Equinix DC1 (Primary) -->
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;strokeColor=#ffffff;" edge="1" parent="1" source="firewall" target="eqAshburn"><mxGeometry relative="1"/></mxCell>
+
+        <!-- Firewall → Equinix NY5 (Dashed / Secondary) -->
+        <mxCell style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;dashed=1;strokeColor=#ffffff;" edge="1" parent="1" source="firewall" target="eqNY"><mxGeometry relative="1"/></mxCell>
+
+        <!-- Equinix → Equinix Fabric -->
+        <mxCell style="endArrow=block;strokeColor=#ffffff;" edge="1" parent="1" source="eqAshburn" target="vcDC1"><mxGeometry relative="1"/></mxCell>
+        <mxCell style="endArrow=block;strokeColor=#ffffff;" edge="1" parent="1" source="eqNY" target="vcNY5"><mxGeometry relative="1"/></mxCell>
+
+        <!-- Equinix Fabric → Twilio Interconnects -->
+        <mxCell style="endArrow=block;strokeColor=#ffffff;" edge="1" parent="1" source="vcDC1" target="twAshburn"><mxGeometry relative="1"/></mxCell>
+        <mxCell style="endArrow=block;dashed=1;strokeColor=#ffffff;" edge="1" parent="1" source="vcDC1" target="twSJ"><mxGeometry relative="1"/></mxCell>
+        <mxCell style="endArrow=block;dashed=1;strokeColor=#ffffff;" edge="1" parent="1" source="vcNY5" target="twAshburn"><mxGeometry relative="1"/></mxCell>
+        <mxCell style="endArrow=block;dashed=1;strokeColor=#ffffff;" edge="1" parent="1" source="vcNY5" target="twSJ"><mxGeometry relative="1"/></mxCell>
 
       </root>
     </mxGraphModel>
